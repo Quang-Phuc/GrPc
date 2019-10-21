@@ -1,0 +1,68 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package org.baeldung.grpc;
+
+message HelloRequest {
+    // Khai bao bien firstName va lastName va age co so thu tu là 1 2 3
+    string firstName = 1;
+    string lastName = 2;
+    string age =3;
+}
+
+message HelloResponse {
+    // khia bao greeting co so thu tu la 1
+    string greeting = 1;
+}
+
+service HelloService {
+    rpc hello(HelloRequest) returns (HelloResponse);
+    // HelloService nhan thong tin tu phia HelloRequest xu ly va tra ve HelloResponse
+}
+service A {
+    rpc getA(getInforequest) returns (getInfoAReponse);
+    // HelloService nhan thong tin tu phia HelloRequest xu ly va tra ve HelloResponse
+}
+service B {
+    rpc getB(getInforequest) returns (getInfoBReponse);
+    // HelloService nhan thong tin tu phia HelloRequest xu ly va tra ve HelloResponse
+}
+service AB
+{
+    rpc getAB(getInforequest) returns (getInfoABReponse);
+}
+message getInforequest
+{
+    string id =1;
+
+}
+
+message getInfoAReponse
+{
+    repeated InfoA infoA = 1;
+    message InfoA
+    {
+        string idA =1;
+        string nameA = 2;
+    }
+}
+message getInfoBReponse
+{
+    repeated InfoB infoB = 1;
+    message InfoB
+    {
+        string idB =1;
+        string nameB = 2;
+    }
+}
+
+message getInfoABReponse
+{
+    repeated InfoAB infoAB = 1;
+    message InfoAB
+    {
+        string idA=1;
+        string nameA = 2;
+        string nameB=4;
+    }
+}
+
